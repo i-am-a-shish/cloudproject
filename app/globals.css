@@ -1,0 +1,460 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens for futuristic Student Profile Portal theme */
+  --background: #1f2937;
+  --foreground: #ffffff;
+  --card: rgba(255, 255, 255, 0.1);
+  --card-foreground: #ffffff;
+  --popover: rgba(255, 255, 255, 0.2);
+  --popover-foreground: #ffffff;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #8b5cf6;
+  --secondary-foreground: #ffffff;
+  --muted: #f9fafb;
+  --muted-foreground: #4b5563;
+  --accent: #1f2937;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.3);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #0891b2;
+  --chart-1: #8b5cf6;
+  --chart-2: #0891b2;
+  --chart-3: #374151;
+  --chart-4: #f9fafb;
+  --chart-5: #dc2626;
+  --radius: 0.5rem;
+  --sidebar: #1f2937;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #0891b2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #8b5cf6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.3);
+  --sidebar-ring: #0891b2;
+}
+
+.dark {
+  /* Dark mode tokens remain consistent with the futuristic theme */
+  --background: #1f2937;
+  --foreground: #ffffff;
+  --card: rgba(255, 255, 255, 0.1);
+  --card-foreground: #ffffff;
+  --popover: rgba(255, 255, 255, 0.2);
+  --popover-foreground: #ffffff;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #8b5cf6;
+  --secondary-foreground: #ffffff;
+  --muted: #f9fafb;
+  --muted-foreground: #4b5563;
+  --accent: #1f2937;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.3);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #0891b2;
+  --chart-1: #8b5cf6;
+  --chart-2: #0891b2;
+  --chart-3: #374151;
+  --chart-4: #f9fafb;
+  --chart-5: #dc2626;
+  --sidebar: #1f2937;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #0891b2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #8b5cf6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.3);
+  --sidebar-ring: #0891b2;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Enhanced smooth scrolling and transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Global transition for all interactive elements */
+  button,
+  input,
+  textarea,
+  select,
+  a,
+  [role="button"] {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Enhanced animations with more sophisticated easing and effects */
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px #0891b2, 0 0 10px #0891b2, 0 0 15px #0891b2;
+  }
+  50% {
+    text-shadow: 0 0 10px #0891b2, 0 0 20px #0891b2, 0 0 30px #0891b2;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px #0891b2, 0 0 10px #0891b2, 0 0 15px #0891b2;
+  }
+  50% {
+    box-shadow: 0 0 10px #0891b2, 0 0 20px #0891b2, 0 0 30px #0891b2;
+  }
+}
+
+/* New sophisticated animations for enhanced user experience */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation utility classes with improved timing and easing */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-typing {
+  animation: typing 3s steps(40, end);
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #0891b2;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 100%;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Enhanced glassmorphism with better backdrop effects */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glassmorphism:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced gradient background with subtle animation */
+.gradient-bg {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Micro-interactions for better user feedback */
+.interactive-element {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-element::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.interactive-element:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Loading states and skeleton animations */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+/* Focus states with enhanced accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger animation delays for sequential reveals */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+.stagger-6 {
+  animation-delay: 0.6s;
+}
