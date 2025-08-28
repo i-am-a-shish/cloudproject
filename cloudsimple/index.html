@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVault - Personal Document Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>SecureVault</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-outline" onclick="showLogin()">Login</button>
+                    <button class="btn btn-primary" onclick="showSignup()">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="hero">
+            <div class="hero-content">
+                <h1>Your Personal Document Vault</h1>
+                <p>Securely store, organize, and access your important documents from anywhere. Keep your contracts, certificates, invoices, and personal files safe and organized.</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-upload"></i>
+                        <span>Easy Upload</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Storage</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-search"></i>
+                        <span>Quick Access</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="showSignup()">Get Started Free</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+                <p class="auth-switch">Don't have an account? <a href="#" onclick="switchToSignup()">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            </div>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="page">
+        <nav class="dashboard-nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>SecureVault</span>
+                </div>
+                <div class="nav-user">
+                    <span id="userName">Welcome!</span>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h1>My Documents</h1>
+                <button class="btn btn-primary" onclick="showUploadModal()">
+                    <i class="fas fa-plus"></i> Upload Document
+                </button>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-file-alt"></i>
+                    <div>
+                        <h3 id="totalDocs">0</h3>
+                        <p>Total Documents</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <div>
+                        <h3 id="pdfCount">0</h3>
+                        <p>PDF Files</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3 id="recentCount">0</h3>
+                        <p>This Week</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <div class="section-header">
+                    <h2>Recent Documents</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search documents...">
+                    </div>
+                </div>
+                <div id="documentsList" class="documents-grid">
+                    <div class="empty-state">
+                        <i class="fas fa-folder-open"></i>
+                        <h3>No documents yet</h3>
+                        <p>Upload your first document to get started</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Document</h2>
+                <span class="close" onclick="closeModal('uploadModal')">&times;</span>
+            </div>
+            <form id="uploadForm" class="upload-form">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your files here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt,.jpg,.png" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="documentTitle">Document Title</label>
+                    <input type="text" id="documentTitle" placeholder="Enter document title">
+                </div>
+                <div class="form-group">
+                    <label for="documentCategory">Category</label>
+                    <select id="documentCategory">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="financial">Financial</option>
+                        <option value="legal">Legal</option>
+                        <option value="medical">Medical</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Upload Document</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
